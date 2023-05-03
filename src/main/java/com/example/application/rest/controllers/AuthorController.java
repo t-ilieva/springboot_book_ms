@@ -33,6 +33,16 @@ public class AuthorController {
         }
     }
 
+    @GetMapping("/{first_name}/{last_name}")
+    public ResponseEntity<AuthorResponse> getByName(@PathVariable("first_name") String firstName, @PathVariable("last_name") String lastName){
+        Optional<AuthorResponse> authorResponse = authorService.getByName(firstName, lastName);
+        if (authorResponse.isEmpty()){
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(authorResponse.get());
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<AuthorResponse> delete(@PathVariable("id") int id){
         authorService.deleteAuthor(id);

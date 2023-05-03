@@ -1,7 +1,6 @@
 package com.example.application.rest.request;
 
 public class AuthorRequest {
-
     private String firstName;
     private String lastName;
 

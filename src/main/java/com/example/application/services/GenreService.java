@@ -2,9 +2,11 @@ package com.example.application.services;
 
 import com.example.application.data.entities.Genre;
 import com.example.application.data.repositories.GenreRepository;
+import com.example.application.rest.request.GenreRequest;
 import com.example.application.rest.response.GenreResponse;
 import com.example.application.rest.transformers.GenreTransformer;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,5 +37,10 @@ public class GenreService {
 
     public void deleteGenre(int id){
         genreRepository.deleteById(id);
+    }
+
+    public void createGenre(GenreRequest genreRequest){
+        Genre genre = GenreTransformer.toGenreEntity(genreRequest);
+        genreRepository.save(genre);
     }
 }

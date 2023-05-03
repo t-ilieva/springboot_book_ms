@@ -14,7 +14,7 @@ public class GenreTransformer {
         return genreResponse;
     }
 
-    public Genre toGenreEntity (GenreRequest genreRequest){
+    public static Genre toGenreEntity(GenreRequest genreRequest){
         Genre genre = new Genre();
         genre.setName(genreRequest.getName());
 

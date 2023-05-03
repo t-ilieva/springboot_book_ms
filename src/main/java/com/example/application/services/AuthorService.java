@@ -33,6 +33,12 @@ public class AuthorService {
                 map(AuthorTransformer::toAuthorResponse);
     }
 
+    public Optional<AuthorResponse> getByName(String firstName, String lastname){
+        return authorRepository.
+                findByName(firstName, lastname).
+                map(AuthorTransformer::toAuthorResponse);
+    }
+
     public void deleteAuthor(int id){
         authorRepository.deleteById(id);
     }
