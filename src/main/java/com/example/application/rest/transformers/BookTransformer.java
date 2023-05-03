@@ -1,12 +1,18 @@
 package com.example.application.rest.transformers;
 
 import com.example.application.data.entities.Book;
+import com.example.application.data.entities.Genre;
 import com.example.application.rest.request.BookRequest;
+import com.example.application.rest.response.AuthorResponse;
 import com.example.application.rest.response.BookResponse;
 import com.example.application.rest.response.DeactivationReasonResponse;
+import com.example.application.rest.response.GenreResponse;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookTransformer {
 
@@ -37,6 +43,20 @@ public class BookTransformer {
         } else {
             bookResponse.setDeactivationReasonResponse(null);
         }
+
+        List<AuthorResponse> authors =
+                book.
+                getAuthors().
+                stream().
+                map(AuthorTransformer::toAuthorResponse).
+                collect(Collectors.toList());
+        bookResponse.setAuthors(authors);
+
+        List<Genre> genres = book.getGenres();
+        List<GenreResponse> genreResponses = new ArrayList<>();
+        genres.forEach(genre -> genreResponses.add(GenreTransformer.toGenreResponse(genre)));
+
+        bookResponse.setGenres(genreResponses);
 
         return bookResponse;
     }

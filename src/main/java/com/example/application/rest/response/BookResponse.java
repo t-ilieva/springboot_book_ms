@@ -11,8 +11,8 @@ public class BookResponse {
     private String title;
     private int year;
     private String publisher;
-    private List<Genre> genres;
-    private List<Author> authors;
+    private List<GenreResponse> genreResponses;
+    private List<AuthorResponse> authorResponses;
     private String dateAdded;
     private String language;
     private String status;
@@ -40,14 +40,13 @@ public class BookResponse {
 
     public void setPublisher(String publisher) {this.publisher = publisher;}
 
-    public List<Genre> getGenres() {return genres;}
+    public List<GenreResponse> getGenres() {return genreResponses;}
 
-    public void setGenres(List<Genre> genres) {this.genres = genres;}
+    public void setGenres(List<GenreResponse> genres) {this.genreResponses = genres;}
 
-    public List<Author> getAuthors() {return authors;
-    }
+    public List<AuthorResponse> getAuthors() {return authorResponses;}
 
-    public void setAuthors(List<Author> authors) {this.authors = authors;}
+    public void setAuthors(List<AuthorResponse> authors) {this.authorResponses = authors;}
 
     public String getDateAdded() {return dateAdded;}
 

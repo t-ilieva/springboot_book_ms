@@ -12,9 +12,9 @@ public class Genre {
     private String name;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_genre",
-            joinColumns = @JoinColumn(name = "book_id",
+            joinColumns = @JoinColumn(name = "genre_id",
             referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id",
+            inverseJoinColumns = @JoinColumn(name = "book_id",
             referencedColumnName = "id"))
     private List<Book> books;
 
@@ -42,11 +42,5 @@ public class Genre {
         this.books = books;
     }
 
-    @Override
-    public String toString() {
-        return "Genre{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+
 }

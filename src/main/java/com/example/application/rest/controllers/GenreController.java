@@ -1,11 +1,15 @@
 package com.example.application.rest.controllers;
 
+import com.example.application.rest.request.GenreRequest;
 import com.example.application.rest.response.GenreResponse;
 import com.example.application.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +44,18 @@ public class GenreController {
          return ResponseEntity.
                  noContent().
                  build();
+    }
+
+    @PutMapping()
+    public ResponseEntity<GenreRequest> create(@RequestBody GenreRequest genreRequest,
+                                         UriComponentsBuilder builder){
+        int genreId = genreService.createGenre(genreRequest);
+
+        URI location = builder.path("/genres/{id}").
+                buildAndExpand(genreId).toUri();
+        return ResponseEntity.
+                created(location).
+                build();
     }
 
 

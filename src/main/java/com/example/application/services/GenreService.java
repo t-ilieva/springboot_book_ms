@@ -39,8 +39,8 @@ public class GenreService {
         genreRepository.deleteById(id);
     }
 
-    public void createGenre(GenreRequest genreRequest){
+    public int createGenre(GenreRequest genreRequest){
         Genre genre = GenreTransformer.toGenreEntity(genreRequest);
-        genreRepository.save(genre);
+        return genreRepository.save(genre).getId();
     }
 }

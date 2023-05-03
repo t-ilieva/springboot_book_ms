@@ -16,9 +16,9 @@ public class Author {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id",
+            joinColumns = @JoinColumn(name = "author_id",
             referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn( name = "author_id",
+            inverseJoinColumns = @JoinColumn( name = "book_id",
             referencedColumnName = "id"))
     private List<Book> books;
 
