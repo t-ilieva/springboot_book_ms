@@ -90,7 +90,8 @@ public class BookService {
         }
 
         Book book = BookTransformer.toBookEntity(bookRequest);
-        book.setAuthors(authors);
+        book.setAuthors(new ArrayList<>());
+        authors.forEach(a -> book.getAuthors().add(a));
         book.setGenres(genres);
         return bookRepository.save(book).getId();
     }
