@@ -3,7 +3,9 @@ package com.example.application.services;
 import com.example.application.data.entities.Genre;
 import com.example.application.data.repositories.GenreRepository;
 import com.example.application.rest.request.GenreRequest;
+import com.example.application.rest.response.AuthorResponse;
 import com.example.application.rest.response.GenreResponse;
+import com.example.application.rest.transformers.AuthorTransformer;
 import com.example.application.rest.transformers.GenreTransformer;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +34,12 @@ public class GenreService {
     public Optional<GenreResponse> getById(int id){
         return genreRepository.
                 findById(id).
+                map(GenreTransformer::toGenreResponse);
+    }
+
+    public Optional<GenreResponse> getByName(String name){
+        return genreRepository.
+                findByName(name).
                 map(GenreTransformer::toGenreResponse);
     }
 

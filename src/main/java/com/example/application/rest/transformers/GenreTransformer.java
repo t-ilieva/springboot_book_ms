@@ -20,4 +20,12 @@ public class GenreTransformer {
 
         return genre;
     }
+
+    public static Genre toGenreEntity(GenreResponse genreResponse){
+        Genre genre = new Genre();
+        genre.setId(genreResponse.getId());
+        genre.setName(genreResponse.getName());
+
+        return genre;
+    }
 }

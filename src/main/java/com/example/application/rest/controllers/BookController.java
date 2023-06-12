@@ -1,12 +1,14 @@
 package com.example.application.rest.controllers;
 
-import com.example.application.rest.response.AuthorResponse;
+import com.example.application.rest.request.BookRequest;
 import com.example.application.rest.response.BookResponse;
 import com.example.application.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,19 @@ public class BookController {
 
         return ResponseEntity.
                 noContent().
+                build();
+    }
+
+    @PostMapping()
+    public ResponseEntity<BookRequest> create(@RequestBody BookRequest bookRequest,
+                                              UriComponentsBuilder builder){
+
+        int bookId = bookService.createBook(bookRequest);
+
+        URI location = builder.path("/books/{id}").
+                buildAndExpand(bookId).toUri();
+        return ResponseEntity.
+                created(location).
                 build();
     }
 }

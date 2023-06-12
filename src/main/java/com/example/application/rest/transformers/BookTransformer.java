@@ -61,7 +61,7 @@ public class BookTransformer {
         return bookResponse;
     }
 
-    public Book toBookEntity(BookRequest bookRequest){
+    public static Book toBookEntity(BookRequest bookRequest){
         Book book = new Book();
         book.setAmount(bookRequest.getAmount());
         book.setTitle(bookRequest.getTitle());

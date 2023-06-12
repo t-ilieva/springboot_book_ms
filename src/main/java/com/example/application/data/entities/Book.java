@@ -1,12 +1,13 @@
 package com.example.application.data.entities;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
 @Entity
 @Table(name = "book")
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

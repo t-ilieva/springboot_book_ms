@@ -2,6 +2,7 @@ package com.example.application.services;
 
 import com.example.application.data.entities.Author;
 import com.example.application.data.repositories.AuthorRepository;
+import com.example.application.rest.request.AuthorRequest;
 import com.example.application.rest.response.AuthorResponse;
 import com.example.application.rest.transformers.AuthorTransformer;
 import org.springframework.stereotype.Service;
@@ -43,15 +44,8 @@ public class AuthorService {
         authorRepository.deleteById(id);
     }
 
-//    public void createAuthor(String firstName, String lastName){
-//        Author author = new Author();
-//
-//        authorRepository.save(author);
-//
-//    }
-
-   //public AuthorResponse findByName(String firstName, String lastName){
-    //    return authorRepository.findByName(firstName, lastName);
-
-   //}
+    public int createAuthor(AuthorRequest authorRequest){
+        Author author = AuthorTransformer.toAuthorEntity(authorRequest);
+        return authorRepository.save(author).getId();
+    }
 }

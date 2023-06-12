@@ -13,8 +13,8 @@ public class BookRequest {
     private String publisher;
     private String language;
     private String status;
-    private List<Genre> genres;
-    private List<Author> authors;
+    private List<GenreRequest> genres;
+    private List<AuthorRequest> authors;
 
     public int getAmount() {return amount;}
 
@@ -40,13 +40,13 @@ public class BookRequest {
 
     public void setLanguage(String language) {this.language = language;}
 
-    public List<Genre> getGenres() {return genres;}
+    public List<GenreRequest> getGenres() {return genres;}
 
-    public void setGenres(List<Genre> genres) {this.genres = genres;}
+    public void setGenres(List<GenreRequest> genres) {this.genres = genres;}
 
-    public List<Author> getAuthors() {return authors;}
+    public List<AuthorRequest> getAuthors() {return authors;}
 
-    public void setAuthors(List<Author> authors) {this.authors = authors;}
+    public void setAuthors(List<AuthorRequest> authors) {this.authors = authors;}
 
     public String getStatus() {
         return status;

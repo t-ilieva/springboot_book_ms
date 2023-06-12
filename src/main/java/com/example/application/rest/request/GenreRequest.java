@@ -1,7 +1,9 @@
 package com.example.application.rest.request;
 
 public class GenreRequest {
+
     private String name;
+
 
     public String getName() {return name;}
 
